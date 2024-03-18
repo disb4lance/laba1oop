@@ -1,8 +1,7 @@
 ﻿using ClassLibrary1;
-using System.ComponentModel;
 using static System.Console;
 
-drobi x = new drobi(2, 5);
+drobi x = new drobi(2, 3);
 //WriteLine(x.Tostring());
 drobi y = new drobi(3, 5);
 drobi b = x + y;
@@ -24,7 +23,12 @@ child1.Children.Add(grandchild1);
 child1.Children.Add(grandchild3);
 child2.Children.Add(grandchild2);
 
-root.PrintChildren();
+
+var qwe = root.PrintChildren();
+foreach (var q in qwe)
+{
+    WriteLine(q);
+}
 
 var europ = new EuropData();
 var europDecorator = new EuropDecorator(europ);

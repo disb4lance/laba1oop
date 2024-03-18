@@ -11,7 +11,7 @@ namespace ClassLibrary1
         {
             this.Name = name;
         }
-        
+
         public abstract string GetData();
     }
 

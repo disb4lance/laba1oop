@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ClassLibrary1
+﻿namespace ClassLibrary1
 {
     public partial class drobi
     {
         #region sravnenie
-        public static bool operator ==(drobi x, drobi y) { 
-            if (x.Numerator == y.Numerator && x.Denominator == y.Denominator) return true; 
+        public static bool operator ==(drobi x, drobi y)
+        {
+            if (x.Numerator == y.Numerator && x.Denominator == y.Denominator) return true;
             return false;
         }
 
@@ -22,7 +17,7 @@ namespace ClassLibrary1
 
         public static bool operator <(drobi x, drobi y)
         {
-            if (x.Numerator / x.Denominator < y.Numerator/y.Denominator) return true;
+            if (x.Numerator / x.Denominator < y.Numerator / y.Denominator) return true;
             return false;
         }
 

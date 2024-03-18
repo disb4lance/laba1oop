@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ClassLibrary1
+﻿namespace ClassLibrary1
 {
     public partial class drobi
     {
@@ -34,7 +28,8 @@ namespace ClassLibrary1
 
 
         }
-        public static drobi operator +(drobi x, drobi y) { 
+        public static drobi operator +(drobi x, drobi y)
+        {
             drobi a = new drobi(x.Numerator * y.Denominator + y.Numerator * x.Denominator, x.Denominator * y.Denominator);
             return a.ToClass();
         }

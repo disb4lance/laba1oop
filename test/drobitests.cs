@@ -1,17 +1,18 @@
 using ClassLibrary1;
-using Xunit;
 
 namespace test
 {
     public class drobitests
     {
-        [Fact]
-        public void plus()
+        [Theory]
+        [InlineData(2, 5, 3, 5, 1, 1)]
+        [InlineData(3, 4, 2, 5, 23, 1)]
+        public void plus(int a1, int a2, int b1, int b2, int r1, int r2)
         {
             // Arrange
-            drobi a = new drobi(2, 5);
-            drobi b = new drobi(3, 5);
-            drobi expect = new drobi(1, 1);
+            drobi a = new drobi(a1, a2);
+            drobi b = new drobi(b1, b2);
+            drobi expect = new drobi(r1, r2);
 
             // Act
             drobi c = a + b;
@@ -20,45 +21,51 @@ namespace test
             Assert.Equal(expect.Numerator, c.Numerator);
             Assert.Equal(expect.Numerator, c.Numerator);
         }
-        [Fact]
-        public void minus()
+        [Theory]
+        [InlineData(2, 5, 3, 5, -1, 1)]
+        [InlineData(3, 4, 2, 5, 7, 1)]
+        public void minus(int a1, int a2, int b1, int b2, int r1, int r2)
         {
             // Arrange
-            drobi a = new drobi(2, 5);
-            drobi b = new drobi(3, 5);
-            drobi expect = new drobi(1, 5);
+            drobi a = new drobi(a1, a2);
+            drobi b = new drobi(b1, b2);
+            drobi expect = new drobi(r1, r2);
 
             // Act
-            drobi c = b - a;
+            drobi c = a - b;
 
             // Assert
             Assert.Equal(expect.Numerator, c.Numerator);
             Assert.Equal(expect.Numerator, c.Numerator);
         }
 
-        [Fact]
-        public void ymnoj()
+        [Theory]
+        [InlineData(2, 5, 3, 5, 6, 1)]
+        [InlineData(3, 4, 2, 5, 3, 1)]
+        public void ymnoj(int a1, int a2, int b1, int b2, int r1, int r2)
         {
             // Arrange
-            drobi a = new drobi(2, 5);
-            drobi b = new drobi(3, 5);
-            drobi expect = new drobi(6, 25);
+            drobi a = new drobi(a1, a2);
+            drobi b = new drobi(b1, b2);
+            drobi expect = new drobi(r1, r2);
 
             // Act
-            drobi c = b * a;
+            drobi c = a * b;
 
             // Assert
             Assert.Equal(expect.Numerator, c.Numerator);
             Assert.Equal(expect.Numerator, c.Numerator);
         }
 
-        [Fact]
-        public void razdel()
+        [Theory]
+        [InlineData(2, 5, 3, 5, 2, 1)]
+        [InlineData(3, 4, 2, 5, 15, 1)]
+        public void razdel(int a1, int a2, int b1, int b2, int r1, int r2)
         {
             // Arrange
-            drobi a = new drobi(2, 5);
-            drobi b = new drobi(3, 5);
-            drobi expect = new drobi(2, 3);
+            drobi a = new drobi(a1, a2);
+            drobi b = new drobi(b1, b2);
+            drobi expect = new drobi(r1, r2);
 
             // Act
             drobi c = a / b;
@@ -68,12 +75,14 @@ namespace test
             Assert.Equal(expect.Numerator, c.Numerator);
         }
 
-        [Fact]
-        public void ynarminus()
+        [Theory]
+        [InlineData(2, 5, 3, 5, -2, 1)]
+        [InlineData(3, 4, 2, 5, -3, 1)]
+        public void ymarminys(int a1, int a2, int b1, int b2, int r1, int r2)
         {
             // Arrange
-            drobi a = new drobi(2, 5);
-            drobi expect = new drobi(-2, 5);
+            drobi a = new drobi(a1, a2);
+            drobi expect = new drobi(r1, r2);
 
             // Act
             drobi c = -a;
@@ -83,13 +92,14 @@ namespace test
             Assert.Equal(expect.Numerator, c.Numerator);
         }
 
-        [Fact]
-        public void ravno_ravno()
+        [Theory]
+        [InlineData(2, 5, 3, 5, false)]
+        [InlineData(3, 4, 2, 5, false)]
+        public void ravnoravno(int a1, int a2, int b1, int b2, bool r)
         {
-            // Arrange
-            drobi a = new drobi(2, 5);
-            drobi b = new drobi(3, 5);
-            bool expect = false;
+            drobi a = new drobi(a1, a2);
+            drobi b = new drobi(b1, b2);
+            bool expect = r;
 
             // Act
             bool c = a == b;
@@ -98,13 +108,14 @@ namespace test
             Assert.Equal(expect, c);
         }
 
-        [Fact]
-        public void ne_ravno()
+        [Theory]
+        [InlineData(2, 5, 3, 5, true)]
+        [InlineData(3, 4, 2, 5, true)]
+        public void neravno(int a1, int a2, int b1, int b2, bool r)
         {
-            // Arrange
-            drobi a = new drobi(2, 5);
-            drobi b = new drobi(3, 5);
-            bool expect = true;
+            drobi a = new drobi(a1, a2);
+            drobi b = new drobi(b1, b2);
+            bool expect = r;
 
             // Act
             bool c = a != b;
@@ -112,14 +123,15 @@ namespace test
             // Assert
             Assert.Equal(expect, c);
         }
-        
-        [Fact]
-        public void menishe()
+
+        [Theory]
+        [InlineData(2, 5, 3, 5, false)]
+        [InlineData(3, 4, 2, 5, false)]
+        public void menishe(int a1, int a2, int b1, int b2, bool r)
         {
-            // Arrange
-            drobi a = new drobi(2, 5);
-            drobi b = new drobi(3, 5);
-            bool expect = false;
+            drobi a = new drobi(a1, a2);
+            drobi b = new drobi(b1, b2);
+            bool expect = r;
 
             // Act
             bool c = a < b;
@@ -128,13 +140,14 @@ namespace test
             Assert.Equal(expect, c);
         }
 
-        [Fact]
-        public void bolishe()
+        [Theory]
+        [InlineData(2, 5, 3, 5, false)]
+        [InlineData(3, 4, 2, 5, false)]
+        public void bolishe(int a1, int a2, int b1, int b2, bool r)
         {
-            // Arrange
-            var a = new drobi(2, 5);
-            drobi b = new drobi(3, 5);
-            bool expect = false;
+            drobi a = new drobi(a1, a2);
+            drobi b = new drobi(b1, b2);
+            bool expect = r;
 
             // Act
             bool c = a > b;
@@ -143,13 +156,14 @@ namespace test
             Assert.Equal(expect, c);
         }
 
-        [Fact]
-        public void menishe_or_ravno()
+        [Theory]
+        [InlineData(2, 5, 3, 5, true)]
+        [InlineData(3, 4, 2, 5, false)]
+        public void menisheorravno(int a1, int a2, int b1, int b2, bool r)
         {
-            // Arrange
-            drobi a = new drobi(2, 5);
-            drobi b = new drobi(3, 5);
-            bool expect = true;
+            drobi a = new drobi(a1, a2);
+            drobi b = new drobi(b1, b2);
+            bool expect = r;
 
             // Act
             bool c = a <= b;
@@ -158,16 +172,17 @@ namespace test
             Assert.Equal(expect, c);
         }
 
-        [Fact]
-        public void bolishe_or_ravno()
+        [Theory]
+        [InlineData(2, 5, 3, 5, true)]
+        [InlineData(3, 4, 2, 5, false)]
+        public void bolisheorravno(int a1, int a2, int b1, int b2, bool r)
         {
-            // Arrange
-            drobi a = new drobi(2, 5);
-            drobi b = new drobi(3, 5);
-            bool expect = false;
+            drobi a = new drobi(a1, a2);
+            drobi b = new drobi(b1, b2);
+            bool expect = r;
 
             // Act
-            bool c = a >= b;
+            bool c = a <= b;
 
             // Assert
             Assert.Equal(expect, c);

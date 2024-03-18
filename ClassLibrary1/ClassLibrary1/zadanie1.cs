@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace ClassLibrary1
+﻿namespace ClassLibrary1
 {
     public partial class drobi
     {
@@ -14,11 +12,12 @@ namespace ClassLibrary1
             if (Denominator == 0)
             {
                 Console.WriteLine("Denominator = 0");
-                Environment.Exit(0);
+                throw new Exception();
             }
         }
 
-        private (int, int) chet() {
+        private (int, int) chet()
+        {
             for (int i = Numerator; i > 0; i--)
             {
                 if (Numerator % i == 0 && Denominator % i == 0)
@@ -30,8 +29,10 @@ namespace ClassLibrary1
             return (Numerator, Denominator);
 
         }
-        public string Tostring() {
-            if (Numerator < 0 && Denominator < 0) {
+        public string Tostring()
+        {
+            if (Numerator < 0 && Denominator < 0)
+            {
                 Numerator = -Numerator;
                 Denominator = -Denominator;
                 (Numerator, Denominator) = chet();

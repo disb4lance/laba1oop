@@ -1,39 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ClassLibrary1
+﻿namespace ClassLibrary1
 {
     public class TreeNode
-{
-    public int Value { get; set; }
-    public List<TreeNode> Children { get; set; }
-
-    public TreeNode(int value)
     {
-        Value = value;
-        Children = new List<TreeNode>();
-    }
+        public int Value { get; set; }
+        public List<TreeNode> Children { get; set; }
 
-    public void PrintChildren()
-    {
-        Console.WriteLine("Children of node with value " + Value + ":");
-        foreach (var child in Children)
+        public TreeNode(int value)
         {
-            Console.WriteLine(child.Value);
-            child.PrintChildrenRecursively();
+            Value = value;
+            Children = new List<TreeNode>();
+        }
+
+        public List<int> PrintChildren()
+        {
+            var mas = new List<int>();
+            mas.Add(Value);
+
+            if (Children == null)
+                return mas;
+
+            foreach (var child in Children)
+            {
+                mas.AddRange(child.PrintChildren());
+            }
+
+            return mas;
         }
     }
-
-    private void PrintChildrenRecursively()
-    {
-        foreach (var child in Children)
-        {
-            Console.WriteLine(child.Value);
-            child.PrintChildrenRecursively();
-        }
-    }
-}
 }
